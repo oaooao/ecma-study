@@ -1,0 +1,245 @@
+<!-- 
+    TODO APP 练习
+
+    这是一个简单的TODO APP，用户可以添加任务，标记任务为已完成，删除任务。
+
+    任务分为两个列表：TODO List 和 Completed List。
+
+    用户可以通过输入框输入任务，按下回车键或点击添加按钮，将任务添加到 TODO List。
+
+    用户可以通过点击复选框，将任务从 TODO List 移动到 Completed List。
+
+    用户可以通过点击删除按钮，删除任务。
+
+    任务的状态会在切换列表时保持。
+
+    分成两个级别完成这个练习：
+
+    级别一：实现基本功能
+    1. 用户可以通过输入框输入任务，点击添加按钮，将任务添加到 TODO List。
+    2. 用户点击删除按钮，可以删除任务。
+
+    级别二：实现高级功能
+    1. 用户可以通过按下回车键，将任务添加到 TODO List。
+    2. 用户可以通过点击复选框，将任务从 TODO List 移动到 Completed List。
+    3. 用户可以通过点击复选框，将任务从 Completed List 移动到 TODO List。
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO APP</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+
+            width: 80vw;
+            margin: 0 auto;
+        }
+
+        input[type="text"] {
+            width: 200px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        h2 {
+            margin: 10px 0;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            /* gap: 4px; */
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            /* justify-content: space-between; */
+            padding: 4px;
+        }
+
+        li input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        li input[type="checkbox"]:checked+label {
+            text-decoration: line-through;
+        }
+
+        li button {
+            padding: 5px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- <script defer src="./anwser.js "></script> -->
+</head>
+
+<body>
+    <input type="text" name="task" placeholder="Task">
+    <button type="submit">Add</button>
+
+    <h2>TODO List</h2>
+    <ul>
+        <li>
+            <input type="checkbox" name="task" id="task1">
+            <span>Task 1</span>
+            <button type="submit">Delete</button>
+        </li>
+        <li>
+            <input type="checkbox" name="task" id="task2">
+            <span>Task 2</span>
+            <button type="submit">Delete</button>
+        </li>
+        <li>
+            <input type="checkbox" name="task" id="task3">
+            <span>Task 3</span>
+            <button type="submit">Delete</button>
+        </li>
+    </ul>
+
+    <h2>Completed List</h2>
+    <ul>
+        <li>
+            <input type="checkbox" name="task" id="task4" checked>
+            <label for="task4">Task 4</label>
+            <button type="submit">Delete</button>
+        </li>
+        <li>
+            <input type="checkbox" name="task" id="task5" checked>
+            <label for="task5">Task 5</label>
+            <button type="submit">Delete</button>
+        </li>
+        <li>
+            <input type="checkbox" name="task" id="task6" checked>
+            <label for="task6">Task 6</label>
+            <button type="submit">Delete</button>
+        </li>
+    </ul>
+
+    <script>
+        /**
+         * @todo Implement the TODO APP
+         * 
+         * 1. Get the input element and button element
+         * 2. Add event listener to the input element and button element
+         * 3. When the user press enter or click the button, add the task to the todo list
+         * 4. Create a new li element
+         * 5. Create a new checkbox element
+         * 6. Create a new label element
+         * 7. Create a new button element
+         * 8. Append the checkbox, label, and button to the li element
+         * 9. Append the li element to the todo list
+         * 10. Add event listener to the checkbox element
+         * 11. When the checkbox is checked, move the li element to the completed list
+         * 12. Add event listener to the button element
+         * 13. When the button is clicked, remove the li element
+         */
+
+        const input = document.querySelector('input[type="text"]');
+        const button = document.querySelector('button');
+        const todoList = document.querySelector('h2 + ul');
+        const completedList = document.querySelector('h2 + ul + h2 + ul');
+
+        button.addEventListener('click', function () {
+            const task = input.value;
+
+            if (task) {
+                const li = document.createElement('li');
+                const checkbox = document.createElement('input');
+                const label = document.createElement('label');
+                const deleteButton = document.createElement('button');
+
+                checkbox.type = 'checkbox';
+                label.textContent = task;
+                deleteButton.textContent = 'Delete';
+
+                li.appendChild(checkbox);
+                li.appendChild(label);
+                li.appendChild(deleteButton);
+
+                todoList.appendChild(li);
+
+                checkbox.addEventListener('change', function () {
+                    if (checkbox.checked) {
+                        completedList.appendChild(li);
+                    } else {
+                        todoList.appendChild(li);
+                    }
+                });
+
+                deleteButton.addEventListener('click', function () {
+                    li.remove();
+                });
+
+                input.value = '';
+            }
+        });
+
+        input.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                button.click();
+            }
+        });
+
+        const todoItems = document.querySelectorAll('h2 + ul li');
+
+        todoItems.forEach(function (todoItem) {
+            const checkbox = todoItem.querySelector('input[type="checkbox"]');
+            const deleteButton = todoItem.querySelector('button');
+
+            checkbox.addEventListener('change', function () {
+                if (checkbox.checked) {
+                    completedList.appendChild(todoItem);
+                } else {
+                    todoList.appendChild(todoItem);
+                }
+            });
+
+            deleteButton.addEventListener('click', function () {
+                todoItem.remove();
+            });
+        });
+
+        const completedItems = document.querySelectorAll('h2 + ul + h2 + ul li');
+
+        completedItems.forEach(function (completedItem) {
+            const checkbox = completedItem.querySelector('input[type="checkbox"]');
+            const deleteButton = completedItem.querySelector('button');
+
+            checkbox.addEventListener('change', function () {
+                if (checkbox.checked) {
+                    completedList.appendChild(completedItem);
+                } else {
+                    todoList.appendChild(completedItem);
+                }
+            });
+
+            deleteButton.addEventListener('click', function () {
+                completedItem.remove();
+            });
+        });
+    </script>
+</body>
+
+</html>

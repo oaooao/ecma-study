@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Basic</title>
+</head>
+
+<body>
+    <div id="root" style="color: red">
+        <h1 class="child-0">我是标题 1</h1>
+        <h2>我是标题 2</h2>
+        <h3>我是标题 3</h3>
+
+        <h4 name="child4" style="color: brown;">我是标题 4</h4>
+    </div>
+
+    <script>
+        const parent = document.querySelector('#root');
+
+        const h4 = document.createElement('h4');
+
+        h4.innerHTML = '我是标题 4';
+        // h4.innerText = '我是标题 4';
+        // h4.textContent = '我是标题 4';
+        // const textNode = document.createTextNode('我是标题 4');
+        // h4.appendChild(textNode);
+
+        h4.setAttribute('name', 'child4');
+        h4.setAttribute('style', 'color: brown;');
+
+        parent.appendChild(h4);
+    </script>
+</body>
+
+</html>
