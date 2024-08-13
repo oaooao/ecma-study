@@ -1,45 +1,40 @@
 // 获取输入框元素
-const inputElement = document.querySelector('.input');
-const addBtn = document.querySelector(".topbutton")
-const todoList = document.querySelector(".todo-list")
+const inputElement = document.querySelector(".input");
+const addBtn = document.querySelector(".topbutton");
+const todoList = document.querySelector(".todo-list");
 
 const people = {
-  name: 'Tom',
-}
+  name: "Tom",
+};
 
-addBtn.addEventListener("click",handleClick)
+addBtn.addEventListener("click", handleClick);
 
-function handleClick(){
-  const newItem = document.createElement("li")
+function handleClick() {
+  const newItem = document.createElement("li");
 
-  const checkbox = document.createElement("input")
-  checkbox.setAttribute("type","checkbox")
-  checkbox.setAttribute("name","task")
-  
-  const label = document.createElement("span")
-label.innerHTML = inputElement.value
+  const checkbox = document.createElement("input");
+  checkbox.setAttribute("type", "checkbox");
+  checkbox.setAttribute("name", "task");
 
-  const deleteButton = document.createElement("button")
-  deleteButton.setAttribute("type","submit")
-  deleteButton.innerHTML = "Delete"
+  const label = document.createElement("span");
+  label.innerHTML = inputElement.value;
 
-  deleteButton.addEventListener("click", handleDelete)
+  const deleteButton = document.createElement("button");
+  deleteButton.setAttribute("type", "submit");
+  deleteButton.innerHTML = "Delete";
 
-  newItem.appendChild(checkbox)
-  newItem.appendChild(label)
-  newItem.appendChild(deleteButton)
+  deleteButton.addEventListener("click", handleDelete);
 
-  console.dir(inputElement)
+  newItem.appendChild(checkbox);
+  newItem.appendChild(label);
+  newItem.appendChild(deleteButton);
 
-  todoList.appendChild(newItem)
+  console.dir(inputElement);
 
-  function handleDelete(){
+  todoList.appendChild(newItem);
+
+  function handleDelete() {
     // todoList.removeChild(newItem);
-    newItem.remove()
+    newItem.remove();
   }
 }
-
-
-
-
-
