@@ -1,0 +1,86 @@
+.steps-container {
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 100px auto;
+  display: flex;
+}
+
+.steps {
+  border: 1px dashed #db7093;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  display: flex;
+
+  & .step {
+    border: 2px solid #8080808f;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    display: flex;
+
+    & .step-text {
+      color: olive;
+      font-size: 1.2rem;
+    }
+  }
+
+  & .step.active, & .step:first-child {
+    border-color: #db7093;
+  }
+
+  & .bar {
+    background-color: #8080808f;
+    flex: 1;
+    height: 4px;
+
+    & .bar-inner {
+      transform-origin: 0;
+      will-change: transform;
+      background-color: #db7093;
+      height: 100%;
+      transition: transform .3s;
+      transform: scaleX(0);
+    }
+
+    & .bar-inner.active {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.controls {
+  align-items: center;
+  gap: 20px;
+  display: flex;
+
+  & .btn {
+    cursor: pointer;
+    border: 1px solid #db7093;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: all .3s;
+  }
+
+  & .next {
+    color: #fff;
+    background-color: #db7093;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+
+  & .prev {
+    color: #db7093;
+    background-color: #fff;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+}
+/*# sourceMappingURL=index.0bd5200b.css.map */

@@ -1,0 +1,90 @@
+.steps-container {
+  margin: 100px auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.steps {
+  width: 400px;
+  border: 1px dashed palevioletred;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .step {
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(128, 128, 128, 0.562);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .step-text {
+      font-size: 1.2rem;
+      color: olive;
+    }
+  }
+
+  .step.active {
+    border-color: palevioletred;
+  }
+
+  .step:first-child {
+    border-color: palevioletred;
+  }
+
+  .bar {
+    flex: 1;
+    height: 4px;
+    background-color: rgba(128, 128, 128, 0.562);
+
+    .bar-inner {
+      height: 100%;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+      will-change: transform;
+      background-color: palevioletred;
+    }
+
+    .bar-inner.active {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.controls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  .btn {
+    padding: 10px 20px;
+    border: 1px solid palevioletred;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .next {
+    color: white;
+    background-color: palevioletred;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+
+  .prev {
+    background-color: white;
+    color: palevioletred;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+}
