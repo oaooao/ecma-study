@@ -33,9 +33,9 @@
     border-color: palevioletred;
   }
 
-  .step:first-child {
+  /* .step:first-child {
     border-color: palevioletred;
-  }
+  } */
 
   .bar {
     flex: 1;
