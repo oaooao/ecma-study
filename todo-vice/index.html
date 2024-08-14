@@ -23,127 +23,134 @@
     1. 用户可以通过按下回车键，将任务添加到 TODO List。
     2. 用户可以通过点击复选框，将任务从 TODO List 移动到 Completed List。
     3. 用户可以通过点击复选框，将任务从 Completed List 移动到 TODO List。
-
+    4. 用户可以通过输入框输入关键字，搜索任务。
 -->
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TODO APP</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
 
-            width: 80vw;
-            margin: 0 auto;
-        }
+        width: 80vw;
+        margin: 0 auto;
+      }
 
-        input[type="text"] {
-            width: 200px;
-            padding: 10px;
-            margin: 10px 0;
-        }
+      input[type="text"] {
+        width: 200px;
+        padding: 10px;
+        margin: 10px 0;
+      }
 
-        button {
-            padding: 10px;
-            margin: 10px 0;
-        }
+      /* 搜素 */
+      #search {
+        width: 200px;
+        padding: 10px;
+        margin: 10px 0;
+      }
 
-        h2 {
-            margin: 10px 0;
-        }
+      button {
+        padding: 10px;
+        margin: 10px 0;
+      }
 
-        ul {
-            display: flex;
-            flex-direction: column;
-            /* gap: 4px; */
-            list-style-type: none;
-            padding: 0;
-        }
+      h2 {
+        margin: 10px 0;
+      }
 
-        li {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            /* justify-content: space-between; */
-            padding: 4px;
-        }
+      ul {
+        display: flex;
+        flex-direction: column;
+        /* gap: 4px; */
+        list-style-type: none;
+        padding: 0;
+      }
 
-        li input[type="checkbox"] {
-            margin-right: 10px;
-        }
+      li {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        /* justify-content: space-between; */
+        padding: 4px;
+      }
 
-        li input[type="checkbox"]:checked+label {
-            text-decoration: line-through;
-        }
+      li input[type="checkbox"] {
+        margin-right: 10px;
+      }
 
-        li button {
-            padding: 5px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+      li input[type="checkbox"]:checked + span {
+        text-decoration: line-through;
+      }
+
+      li button {
+        padding: 5px;
+        background-color: red;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
     </style>
 
     <script defer src="./anwser.js "></script>
-</head>
+  </head>
 
-<body>
-    <input class="input" type="text" name="task" placeholder="Task">
+  <body>
+    <input class="input" type="text" name="task" placeholder="Task" />
     <button class="topbutton" type="submit">Add</button>
 
     <h2>TODO List</h2>
-    <ul class="todo-list">
-        <li>
-            <input type="checkbox" name="task" id="task1">
-            <label for="task1">Task 1</label>
-            <button type="submit">Delete</button>
-        </li>
-        <li>
-            <input type="checkbox" name="task" id="task2">
-            <label for="task2">Task 2</label>
-            <button type="submit">Delete</button>
-        </li>
-        <li>
-            <input type="checkbox" name="task" id="task3">
-            <label for="task3">Task 3</label>
-            <button type="submit">Delete</button>
-        </li>
 
-        <!-- <li>
+    <!-- 搜索 -->
+    <input class="todolistinput" type="text" id="search" placeholder="Search" />
+
+    <ul class="todo-list">
+      <li>
+        <input type="checkbox" name="task" id="task1" />
+        <span for="task1">Task 1</span>
+        <button type="submit">Delete</button>
+      </li>
+      <li>
+        <input type="checkbox" name="task" id="task2" />
+        <span for="task2">Task 2</span>
+        <button type="submit">Delete</button>
+      </li>
+      <li>
+        <input type="checkbox" name="task" id="task3" />
+        <span for="task3">Task 3</span>
+        <button type="submit">Delete</button>
+      </li>
+
+      <!-- <li>
           <input type="checkbox" name="task" id="task3">
-          <label for="task3">Hello</label>
+          <span for="task3">Hello</span>
           <button type="submit">Delete</button>
       </li> -->
-
-  
     </ul>
 
     <h2>Completed List</h2>
     <ul class="completed-list">
-        <li>
-            <input type="checkbox" name="task" id="task4" checked>
-            <label for="task4">Task 4</label>
-            <button type="submit">Delete</button>
-        </li>
-        <li>
-            <input type="checkbox" name="task" id="task5" checked>
-            <label for="task5">Task 5</label>
-            <button type="submit">Delete</button>
-        </li>
-        <li>
-            <input type="checkbox" name="task" id="task6" checked>
-            <label for="task6">Task 6</label>
-            <button type="submit">Delete</button>
-        </li>
+      <li>
+        <input type="checkbox" name="task" id="task4" checked />
+        <span for="task4">Task 4</span>
+        <button type="submit">Delete</button>
+      </li>
+      <li>
+        <input type="checkbox" name="task" id="task5" checked />
+        <span for="task5">Task 5</span>
+        <button type="submit">Delete</button>
+      </li>
+      <li>
+        <input type="checkbox" name="task" id="task6" checked />
+        <span for="task6">Task 6</span>
+        <button type="submit">Delete</button>
+      </li>
     </ul>
-</body>
-
+  </body>
 </html>
